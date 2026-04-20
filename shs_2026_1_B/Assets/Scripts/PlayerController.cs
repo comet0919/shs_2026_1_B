@@ -17,6 +17,10 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+        if (moveInput < 0)
+            transform.localScale = new Vector3(1, 1, 1);
+        else if (moveInput > 0)
+            transform.localScale = new Vector3(-1, 1, 1);
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
     public void OnMove(InputValue value)
